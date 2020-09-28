@@ -251,8 +251,10 @@ exports.npm = {
             let env = npm_env_1.getNpmEnvironment(options);
             options.debug("Running command: npm publish", { stdio, cwd, env });
             let command = options.dryRun ? ["publish", "--dry-run"] : ["publish"];
-            // Run NPM to publish the package
-            //await ezSpawn.async("npm", command, { cwd, stdio, env });
+            
+          console.log(options);
+          // Run NPM to publish the package
+            await ezSpawn.async("npm", command, { cwd, stdio, env });
         }
         catch (error) {
             throw ono_1.ono(error, `Unable to publish ${name} v${version} to NPM.`);
