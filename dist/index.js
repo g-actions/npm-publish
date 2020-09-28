@@ -232,7 +232,8 @@ exports.npm = {
             return semver;
         }
         catch (error) {
-            throw ono_1.ono(error, `Unable to determine the current version of ${name} on NPM.`);
+          return new semver_1.SemVer("0.0.0");
+            //throw ono_1.ono(error, `Unable to determine the current version of ${name} on NPM.`);
         }
     },
     /**
