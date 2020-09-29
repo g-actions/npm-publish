@@ -252,7 +252,7 @@ exports.npm = {
             options.debug("Running command: npm publish", { stdio, cwd, env });
             let command = options.dryRun ? ["publish", "--dry-run"] : ["publish"];
             
-          console.log(options);
+          console.log(command);
           // Run NPM to publish the package
             await ezSpawn.async("npm", command, { cwd, stdio, env });
         }
