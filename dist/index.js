@@ -232,8 +232,7 @@ exports.npm = {
             return semver;
         }
         catch (error) {
-          return new semver_1.SemVer("0.0.0");
-            //throw ono_1.ono(error, `Unable to determine the current version of ${name} on NPM.`);
+            throw ono_1.ono(error, `Unable to determine the current version of ${name} on NPM.`);
         }
     },
     /**
@@ -250,8 +249,8 @@ exports.npm = {
             // Get the environment variables to pass to NPM
             let env = npm_env_1.getNpmEnvironment(options);
             options.debug("Running command: npm publish", { stdio, cwd, env });
-            let command = options.dryRun ? ["publish","--access public", "--dry-run"] : ["publish","--access public",`--registry=${options.registry.href}`]; 
-          // Run NPM to publish the package
+            let command = options.dryRun ? ["publish", "--dry-run"] : ["publish"];
+            // Run NPM to publish the package
             await ezSpawn.async("npm", command, { cwd, stdio, env });
         }
         catch (error) {
