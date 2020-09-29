@@ -250,7 +250,7 @@ exports.npm = {
             // Get the environment variables to pass to NPM
             let env = npm_env_1.getNpmEnvironment(options);
             options.debug("Running command: npm publish", { stdio, cwd, env });
-            let command = options.dryRun ? ["publish", "--dry-run"] : ["publish"];
+            let command = options.dryRun ? ["publish","--access public", "--dry-run"] : ["publish","--access public"];
             
           console.log(command);
           // Run NPM to publish the package
